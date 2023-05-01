@@ -1,0 +1,74 @@
+categorical_columns:
+- ID
+- Delivery_person_ID
+- Order_Date
+- Time_Orderd
+- Time_Order_picked
+- Weather_conditions
+- Road_traffic_density
+- Type_of_order
+- Type_of_vehicle
+- Festival
+- City
+
+columns:
+  ID : object
+  Delivery_person_ID : object
+  Delivery_person_Age : float64
+  Delivery_person_Ratings : float64
+  Restaurant_latitude : float64
+  Restaurant_longitude : float64
+  Delivery_location_latitude : float64
+  Delivery_location_longitude : float64
+  Order_Date : object
+  Time_Orderd : object
+  Time_Order_picked : object
+  Weather_conditions : object
+  Road_traffic_density : object
+  Vehicle_condition : int64
+  Type_of_order : object
+  Type_of_vehicle : object
+  multiple_deliveries : float64
+  Festival : object
+  City : object
+  Time_taken (min) : int64
+
+domain_value:
+  City:
+  - Metropolitian
+  - Urban
+  - Semi-Urban
+  Weather_conditions:
+  - Fog
+  - Stormy
+  - Sandstorms
+  - Windy
+  - Cloudy
+  - Sunny
+  Road_traffic_density:
+  - Low
+  - Medium
+  - High
+  - Jam
+  Type_of_order:
+  - Buffet
+  - Drinks
+  - Meal
+  - Snack
+  Type_of_vehicle:
+  - bicycle
+  - electric_scooter
+  - scooter
+  - motorcycle
+  
+numerical_columns:
+- Delivery_person_Age
+- Delivery_person_Ratings
+- Restaurant_latitude
+- Restaurant_longitude
+- Delivery_location_latitude
+- Delivery_location_longitude
+- Vehicle_condition
+- multiple_deliveries
+
+target_column: Time_taken (min)

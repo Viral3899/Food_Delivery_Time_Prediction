@@ -1,0 +1,10 @@
+flask
+pandas
+numpy
+scikit-learn
+xgboost
+catboost
+evidently==0.2.0
+dill
+pytest
+-e .
