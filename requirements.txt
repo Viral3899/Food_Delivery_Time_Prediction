@@ -7,4 +7,5 @@ catboost
 evidently==0.2.0
 dill
 pytest
+geopy
 -e .
