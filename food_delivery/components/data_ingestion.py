@@ -207,18 +207,18 @@ class DataIngestion:
 
 if __name__ == '__main__':
     a = DataIngestion(Configuration(
-        config_file_path='D:\End_to_End_Project\Food_delivery\config\config.yaml').get_data_ingestion_config())
+        config_file_path=r'D:\project_task_extra\Project\food\config\config.yaml').get_data_ingestion_config())
     data_ingestion_artifact =a.initiate_data_ingestion()
     
     data_validation = DataValidation(Configuration(
-        config_file_path='D:\End_to_End_Project\Food_delivery\config\config.yaml').get_data_validation_config(
+        config_file_path=r'D:\project_task_extra\Project\food\config\config.yaml').get_data_validation_config(
             ), data_ingestion_artifact=data_ingestion_artifact)
     data_validation_artifact = data_validation.initiate_data_validation()
     
     data_tranforamtion = DataTransformation(data_transformation_config= Configuration(
-        config_file_path='D:\End_to_End_Project\Food_delivery\config\config.yaml').get_data_transformation_config(
+        config_file_path=r'D:\project_task_extra\Project\food\config\config.yaml').get_data_transformation_config(
             ), data_ingestion_artifact=data_ingestion_artifact,data_validation_artifact=data_validation_artifact)
-    print(data_tranforamtion())
+    # print(data_tranforamtion())
     data_tranforamtion.initiate_data_transformation()
     
     

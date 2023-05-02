@@ -9,7 +9,7 @@ import numpy as np
 from sklearn.metrics import r2_score, mean_squared_error
 
 
-from food_delivery.utils import read_yaml_file
+from food_delivery.util import read_yaml_file
 from food_delivery.logger import logging
 from food_delivery.exception import CustomException
 

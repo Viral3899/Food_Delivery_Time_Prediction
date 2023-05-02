@@ -50,7 +50,47 @@ class FeatureGenerator(BaseEstimator, TransformerMixin):
             X = X[self.columns]
         
         return X
+class FeatureTransformer:
+    def __init__(self, feature_gen_pipe, preprocessing_pipe) -> None:
+        """
+        This function takes in a preprocessing object and a trained model object and assigns them to the
+        class variables preprocessing_object and trained_model_object.
 
+        :param preprocessing_object: This is the object of the class Preprocessing
+        :param trained_model_object: This is the object of the class that contains the trained model
+        """
+        self.feature_gen_pipe = feature_gen_pipe
+        self.preprocessing_pipe = preprocessing_pipe
+        # self.fit = fit
+
+    def fit_transform(self, X):
+
+        try:
+       
+            transformed_features = self.feature_gen_pipe.transform(X)
+            # print(transformed_features.columns)
+            
+            
+            transomed_data = self.preprocessing_pipe.fit_transform(
+                transformed_features)
+            return transomed_data
+                
+        except Exception as e:
+            logging.info(f'Error Occurred at {CustomException(e,sys)}')
+            raise CustomException(e, sys)
+        
+    def transform(self, X):
+
+        try:
+       
+            transformed_features = self.feature_gen_pipe.transform(X)
+            transomed_data = self.preprocessing_pipe.transform(
+                transformed_features)
+            return transomed_data
+                
+        except Exception as e:
+            logging.info(f'Error Occurred at {CustomException(e,sys)}')
+            raise CustomException(e, sys)
 
 class DataTransformation:
     
@@ -69,19 +109,16 @@ class DataTransformation:
             raise CustomException(e, sys)
         
     
-    
     def get_preprocessor(self) -> ColumnTransformer:
-    # Define the columns that will be transformed by the FeatureGenerator
+        # Define the columns that will be transformed by the FeatureGenerator
         try:
-            date_cols = ['Order_Date', 'Time_Orderd', 'Time_Order_picked']
-            transform_cols = ['Delivery_person_Age', 'Delivery_person_Ratings', 'Restaurant_latitude', 'Restaurant_longitude', 
-                            'Delivery_location_latitude', 'Delivery_location_longitude', 'Road_traffic_density', 
+            
+            num_col = ['Delivery_person_Age', 'Delivery_person_Ratings', 'Restaurant_latitude', 'Restaurant_longitude', 
+                            'Delivery_location_latitude', 'Delivery_location_longitude', 
                             'Day', 'Month', 'Year', 'Hour_Orderd', 'Minute_Orderd', 'Hour_Picked', 'Minute_Picked', 'distance']
+            cat_col = ['Road_traffic_density','Weather_conditions', 'Type_of_order', 'Type_of_vehicle', 'Festival', 'City']
 
             # Define the pipelines for each column type
-            fet_gen_pipeline = Pipeline([
-                ('fet_gen', FeatureGenerator(add_order_time_features=True, columns=None))
-            ])
 
             num_pipeline = Pipeline([
                 ('impute', SimpleImputer(strategy='median')),
@@ -95,22 +132,18 @@ class DataTransformation:
             ])
 
             # Define the preprocessing step to apply each pipeline to its respective columns
-            preprocessor = ColumnTransformer(transformers=[
-                ('fet_gen', fet_gen_pipeline, date_cols),
-                ('num', num_pipeline, transform_cols),
-                ('cat', cat_pipeline, ['Type_of_order', 'Type_of_vehicle', 'City'])
+            preprocessor = ColumnTransformer([
+                ('num', num_pipeline, num_col),
+                ('cat', cat_pipeline,cat_col )
             ])
-            
+
             return preprocessor
-        
+
         except Exception as e:
             logging.info(f"Error Occurred at {CustomException(e,sys)}")
             raise CustomException(e, sys)
-        
-        
-        
 
-        
+           
     def initiate_data_transformation(self) -> DataTransformationArtifact:
         """
         It takes the training and testing dataframe, splits the input and target feature, applies the
@@ -120,9 +153,11 @@ class DataTransformation:
         """
         try:
             logging.info('Obtaining preprocessing Object')
-
+            date_cols = ['Order_Date', 'Time_Orderd', 'Time_Order_picked']
             preprocessing_obj = self.get_preprocessor()
-
+            fet_gen_pipeline = FeatureGenerator(add_order_time_features=True)
+            preprocessing_obj = FeatureTransformer(feature_gen_pipe=fet_gen_pipeline,preprocessing_pipe=preprocessing_obj)
+            
             logging.info('Getting Train and Test File Path')
             train_file_path = self.data_ingestion_artifact.train_file_path
             test_file_path = self.data_ingestion_artifact.test_file_path
@@ -149,6 +184,11 @@ class DataTransformation:
             input_feature_test_df = test_df.drop(
                 columns=[target_column_name], axis=1)
             target_feature_test_df = test_df[target_column_name]
+            
+            # fet_gen_pipeline = FeatureGenerator()
+            # input_feature_train_df = fet_gen_pipeline.transform(input_feature_train_df)
+            # input_feature_test_df = fet_gen_pipeline.transform(input_feature_test_df)
+            
 
             logging.info(
                 f"Applying preprocessing object on training dataframe and testing dataframe")
