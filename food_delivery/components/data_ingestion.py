@@ -16,6 +16,8 @@ from food_delivery.config.configuration import Configuration
 from food_delivery.entity.artifact_entity import DataIngestionArtifact
 from food_delivery.constant import *
 from food_delivery.components.data_validation import *
+from food_delivery.components.data_transformation import *
+
 
 from food_delivery.util import *
 
@@ -211,5 +213,12 @@ if __name__ == '__main__':
     data_validation = DataValidation(Configuration(
         config_file_path='D:\End_to_End_Project\Food_delivery\config\config.yaml').get_data_validation_config(
             ), data_ingestion_artifact=data_ingestion_artifact)
-    data_validation.initiate_data_validation()
-    # print(data_validation)
+    data_validation_artifact = data_validation.initiate_data_validation()
+    
+    data_tranforamtion = DataTransformation(data_transformation_config= Configuration(
+        config_file_path='D:\End_to_End_Project\Food_delivery\config\config.yaml').get_data_transformation_config(
+            ), data_ingestion_artifact=data_ingestion_artifact,data_validation_artifact=data_validation_artifact)
+    print(data_tranforamtion())
+    data_tranforamtion.initiate_data_transformation()
+    
+    
