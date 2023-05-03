@@ -78,6 +78,9 @@
 
 <body>
     <h1>Delivery Form</h1>
+    <form method="GET" action="{{ url_for('retrain') }}">
+		<input type="submit" value="Retrain Model">
+	</form>
     <form method="post" action="{{url_for('index')}}">
         <label for="Delivery_person_Age">Delivery person age:</label>
         <input type="number" step="any" name="Delivery_person_Age" required><br><br>

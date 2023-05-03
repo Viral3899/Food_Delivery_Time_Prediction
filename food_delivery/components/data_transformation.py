@@ -82,9 +82,9 @@ class FeatureTransformer:
     def transform(self, X):
 
         try:
-            print([i for i in X])
+            # print([i for i in X])
             transformed_features = self.feature_gen_pipe.transform(X)
-            print(transformed_features)
+            # print(transformed_features)
             transomed_data = self.preprocessing_pipe.transform(
                 transformed_features)
             return transomed_data
