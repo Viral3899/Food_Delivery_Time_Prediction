@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>OpenStreetMap with Leaflet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        var mymap = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+        }).addTo(mymap);
+
+        var marker;
+
+        function onMapClick(e) {
+            if (marker) {
+                mymap.removeLayer(marker);
+            }
+            marker = L.marker(e.latlng).addTo(mymap);
+            document.getElementById("lat-inpu res").value = e.latlng.lat.toFixed(6);
+            document.getElementById("lng-input").value = e.latlng.lng.toFixed(6);
+        }
+
+        mymap.on('click', onMapClick);
+    </script>
+
+    <form>
+        <label for="lat-input">Latitude:</label>
+        <input type="text" id="lat-input" name="lat"><br><br>
+
+        <label for="lng-input">Longitude:</label>
+        <input type="text" id="lng-input" name="lng">
+        <label for="lat-input">Latitude:</label>
+        <input type="text" id="lat-input de" name="lat"><br><br>
+
+        <label for="lng-input">Longitude:</label>
+        <input type="text" id="lng-input" name="lng">
+    </form>
+</body>
+</html>

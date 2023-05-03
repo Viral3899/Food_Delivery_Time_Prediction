@@ -66,29 +66,29 @@ class DeliveryData:
     def get_food_delivery_data_as_dict(self):
         try:
             input_data = {
-                "delivery_person_age": [self.delivery_person_age],
-                "delivery_person_ratings": [self.delivery_person_ratings],
-                "restaurant_latitude": [self.restaurant_latitude],
-                "restaurant_longitude": [self.restaurant_longitude],
-                "delivery_location_latitude": [self.delivery_location_latitude],
-                "delivery_location_longitude": [self.delivery_location_longitude],
-                "order_date": [self.order_date],
-                "time_ordered": [self.time_ordered],
-                "time_order_picked": [self.time_order_picked],
-                "weather_conditions": [self.weather_conditions],
-                "road_traffic_density": [self.road_traffic_density],
-                "type_of_order": [self.type_of_order],
-                "vehicle_condition": [self.vehicle_condition],
-                "type_of_vehicle": [self.type_of_vehicle],
+                "Delivery_person_Age": [self.delivery_person_age],
+                "Delivery_person_Ratings": [self.delivery_person_ratings],
+                "Restaurant_latitude": [self.restaurant_latitude],
+                "Restaurant_longitude": [self.restaurant_longitude],
+                "Delivery_location_latitude": [self.delivery_location_latitude],
+                "Delivery_location_longitude": [self.delivery_location_longitude],
+                "Order_Date": [self.order_date],
+                "Time_Orderd": [self.time_ordered],
+                "Time_Order_picked": [self.time_order_picked],
+                "Weather_conditions": [self.weather_conditions],
+                "Road_traffic_density": [self.road_traffic_density],
+                "Type_of_order": [self.type_of_order],
+                "Vehicle_condition": [self.vehicle_condition],
+                "Type_of_vehicle": [self.type_of_vehicle],
                 "multiple_deliveries": [self.multiple_deliveries],
-                "festival": [self.festival],
-                "city": [self.city]}
+                "Festival": [self.festival],
+                "City": [self.city]}
             return input_data
         except Exception as e:
             raise CustomException(e, sys)
 
 
-class food_deliveryPredictor:
+class FoodDeliveryTimePredictor:
 
     def __init__(self, model_dir: str):
         try:
@@ -111,7 +111,7 @@ class food_deliveryPredictor:
         try:
             model_path = self.get_latest_model_path()
             model = load_object(file_path=model_path)
-            median_house_value = model.predict(X)
-            return median_house_value
+            Delivery_time = model.predict(X)
+            return Delivery_time
         except Exception as e:
             raise CustomException(e, sys) from e
