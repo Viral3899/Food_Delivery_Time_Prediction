@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .formname .formleft {
+            width: 80%;
+            height: 100%;
+            border: 5px solid #000;
+        }
+
+        .formname .formright {
+            width: 20%;
+            height: auto;
+        }
+
+        .input1 {
+            background-color: #555;
+            display: inline-block;
+        }
+    </style>
+    <section class="formname">
+        <div class="container">
+            <div class="form1">
+
+                <div class="formleft">
+
+                    <form method="post" action="{{url_for('index')}}">
+                        <div class="input1">
+                            <div>
+                                <label for="Delivery_person_Age">Delivery person age:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" name="Delivery_person_Age" required><br><br>
+                            </div>
+                        </div>
+
+                        <div class="input1">
+                            <div>
+                                <label for="Delivery_person_Ratings">Delivery person ratings:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" name="Delivery_person_Ratings" required><br><br>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="toggle-switch">
+                            <label class="form-check-label" for="toggle-switch">Edit Location</label>
+                        </div>
+                        <div class="input1">
+                            <div>
+                                <label for="Restaurant_latitude">Restaurant latitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="restaurant-lat" required><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div>
+                                <label for="Restaurant_longitude">Restaurant longitude:</label>
+                            </div>
+                            <div> <input type="number" step="any" id="restaurant-lng" required><br><br>
+                            </div>
+                        </div><br><br>
+                        <div class="input1">
+                            <div><label for="Delivery_location_latitude">Delivery location
+                                    latitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="delivery-lat" required><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Delivery_location_longitude">Delivery location
+                                    longitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="delivery-lng" required><br><br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input1">
+                            <div><label for="Order_Date">Order date:</label>
+                            </div>
+                            <div>
+                                <input type="date" name="Order_Date" required><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Time_Orderd">Time ordered:</label>
+                            </div>
+                            <div>
+                                <input type="time" name="Time_Orderd" required><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Time_Order_picked">Time order
+                                    picked:</label>
+                            </div>
+                            <div>
+                                <input type="time" name="Time_Order_picked" required><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Weather_conditions">Weather
+                                    conditions:</label></div>
+                            <div>
+                                <select name="Weather_conditions" required>
+                                    <option value="Fog">Fog</option>
+                                    <option value="Stormy">Stormy</option>
+                                    <option value="Sandstorms">Sandstorms</option>
+                                    <option value="Windy">Windy</option>
+                                    <option value="Cloudy">Cloudy</option>
+                                    <option value="Sunny">Sunny</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+
+                            <div><label for="Road_traffic_density">Road
+                                    traffic density:</label></div>
+                            <div><select name="Road_traffic_density" required>
+                                    <option value="Jam">Jam</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Vehicle_condition">Vehicle
+                                    condition:</label></div>
+                            <div><select name="Vehicle_condition" required>
+                                    <option value="2">Excellent</option>
+                                    <option value="1">Good</option>
+                                    <option value="0">Average</option>
+                                    <option value="3">Bad</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Type_of_order">Type of
+                                    order:</label></div>
+                            <div><select name="Type_of_order" required>
+                                    <option value="Snack">Snack</option>
+                                    <option value="Meal">Meal</option>
+                                    <option value="Drinks">Drinks</option>
+                                    <option value="Buffet">Buffet</option>
+                                </select><br><br></div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Type_of_vehicle">Type of
+                                    vehicle:</label></div>
+                            <div><select name="Type_of_vehicle" required>
+                                    <option value="motorcycle">Motorcycle
+                                    </option>
+                                    <option value="scooter">Scooter</option>
+                                    <option value="electric_scooter">Electric
+                                        scooter</option>
+                                    <option value="bicycle">Bicycle</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <div><label for="multiple_deliveries">Multiple
+                                    deliveries:</label></div>
+                            <input type="number" step="any" name="multiple_deliveries" required><br><br>
+                        </div>
+                        <div class="input1">
+                            <div><label for="Festival">Festival:</label></div>
+                            <div><select name="Festival" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+
+                        <div class="input1">
+                            <div><label for="City">City:</label></div>
+                            <div>
+                                <select name="City" required>
+                                    <option value="Metropolitian">Metropolitian</option>
+                                    <option value="Urban">Urban</option>
+                                    <option value="Semi-Urban">
+                                        Semi-Urban</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+
+                </div>
+                <input type="submit" value="Submit">
+
+                </form>
+
+
+                <div class="formright">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+</html>
