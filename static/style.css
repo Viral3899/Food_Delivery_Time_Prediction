@@ -1,0 +1,93 @@
+#outer {
+    background-color: rgb(255, 214, 160);
+    border: 1px solid #000;
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.formdiv {
+    width: 1511px;
+    height: 1511px;
+    background-color: rgb(240, 255, 255);
+    border: 1px solid black;
+    position: relative;
+
+}
+
+.mainbox {
+    height: 140px;
+    width: 240px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 35px;
+    /* box-shadow: 0 0 10px #00ff00; */
+    box-shadow:  4px 0px 20px #000;
+
+}
+.mapbox{
+    height: 455px;
+    width: 890px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 310px;
+    top: 266px;
+    border-radius: 65px;
+    box-shadow: 4px 0px 20px #000;
+
+}
+
+.upperline {
+    top: 100px;
+}
+
+.lowerline {
+    top: 760px;
+}
+
+.secondline {
+    top: 265px;
+}
+
+.thirdline {
+    top: 590px;
+}
+
+.sixthline {
+    top: 1192px;
+}
+
+.firstcol {
+    left: 32px;
+}
+
+.secondcol {
+    left: 438px;
+}
+
+.thirdcol {
+    left: 844px;
+}
+
+.fourthcol {
+    left: 1250px;
+}
+.fithline1{
+    top: 955px;
+    left: 260px;
+}
+.fithline2{
+    top: 955px;
+    left: 640px;
+}
+.fithline3{
+    top: 955px;
+    left: 1021px;
+}
