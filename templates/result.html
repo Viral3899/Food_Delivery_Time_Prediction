@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Delivery Time Prediction Result</title>
@@ -15,39 +16,90 @@
             from {
                 opacity: 0;
             }
+
             to {
-            opacity: 1;
-        }
-    }
-
-    .fadeIn {
-        animation-name: fadeIn;
-        animation-duration: 1s;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateX(-100%);
+                opacity: 1;
+            }
         }
 
-        to {
-            transform: translateX(0%);
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 1s;
         }
-    }
 
-    .slideIn {
-        animation-name: slideIn;
-        animation-duration: 1s;
-    }
-</style>
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0%);
+            }
+        }
+
+        .slideIn {
+            animation-name: slideIn;
+            animation-duration: 1s;
+        }
+
+        table {
+            animation: fadeInDown 0.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+
+        /* Animation Started */
+        .delivery-boy-container {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .delivery-boy {
+            position: absolute;
+            left: 100px;
+            /* initial position off-screen */
+            width: 100px;
+            height: 80px;
+            animation: moveDeliveryBoy 8s linear infinite;
+        }
+
+        @keyframes moveDeliveryBoy {
+            0% {
+                left: -100px;
+            }
+
+            100% {
+                left: calc(100% + 100px);
+                /* move to the end of the screen */
+            }
+        }
+
+        /* Animation Completd */
+    </style>
 
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-4">
-                <h1>Delivery Time Prediction Result</h1>
+                <h3>Delivery Time Prediction Result</h3>
                 <hr>
+                <div class="delivery-boy-container">
+                    <img src="./delivery-boy-3012842-2627456.webp" alt="Delivery Boy" class="delivery-boy" />
+                </div>
             </div>
         </div>
 
@@ -106,7 +158,7 @@
                         <tr>
                             <td class="fw-bold">Distance</td>
                             <td>{{ distance }} km</td>
-                            
+
                         </tr>
                     </tbody>
                 </table>
@@ -115,30 +167,15 @@
 
         <div class="row mt-4" style="align-items :center;justify-content :center;">
             <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Your Order Will Be Delivered In</h3>
-                  <h2 class="card-text">{{ (prediction) }} Minutes</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Your Order Will Be Delivered In</h3>
+                        <h2 class="card-text">{{ (prediction) }} Minutes</h2>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        
-        <style> 
-            table {
-                animation: fadeInDown 0.5s ease-out;
-            }
-        
-            @keyframes fadeInDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10%);
-                }
-        
-                to {
-                    opacity: 1;
-                    transform: translateY(0%);
-                }
-            }
-        </style>
-        
+        </div>
+
+</body>
+
+</html>
