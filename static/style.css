@@ -8,7 +8,10 @@
     align-items: center;
 
 }
-
+Section{
+    height: 100%;
+    position: relative;
+}
 
 
 .formdiv {
@@ -21,17 +24,18 @@
 }
 
 .mainbox {
-    height: 140px;
+    height: 105px;
     width: 240px;
     border: 1px solid black;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    border-radius: 35px;
+    border-radius: 15px;
     /* box-shadow: 0 0 10px #00ff00; */
-    box-shadow:  4px 0px 20px #000;
+    box-shadow: 0px 0px 5px 0px #555;
 
 }
-.mapbox{
+
+#mapbox {
     height: 455px;
     width: 890px;
     border: 1px solid black;
@@ -39,11 +43,45 @@
     position: absolute;
     left: 310px;
     top: 266px;
-    border-radius: 65px;
-    box-shadow: 4px 0px 20px #000;
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px 0px #555;
 
 }
+.form-check{
+    z-index: 9000;
+    position: absolute;
+    top: 2PX;
+    right: 10PX;
+}
 
+.input1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.input1 input {
+    height: 35px;
+    width: 208px;
+    border-radius: 8px;
+    font-size: 18px;
+    margin-top: 12px;
+}
+.input1 select{
+    height: 35px;
+    width: 208px;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-top: 12px;
+}
+.input1 label{
+    font-size: 20px;
+}
+#mapbox label{
+    font-size: 15px;
+    color: #000;
+}
 .upperline {
     top: 100px;
 }
@@ -79,15 +117,30 @@
 .fourthcol {
     left: 1250px;
 }
-.fithline1{
+
+.fithline1 {
     top: 955px;
     left: 260px;
 }
-.fithline2{
+
+.fithline2 {
     top: 955px;
     left: 640px;
 }
-.fithline3{
+
+.fithline3 {
     top: 955px;
     left: 1021px;
+}
+
+.Button{
+    position: absolute;
+top: 1450px;
+right: 20px;
+}
+
+.Button2{
+    position: absolute;
+top: 1450px;
+left: 20px;
 }

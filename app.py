@@ -34,7 +34,7 @@ def index():
         restaurant_longitude = float(request.form.get('Restaurant_longitude'))
         delivery_location_latitude = float(
             request.form.get('Delivery_location_latitude'))
-        delivery_location_longitude = float(
+        delivery_location_longitude = float(    
             request.form.get('Delivery_location_longitude'))
         order_date = request.form.get('Order_Date')
         time_ordered = request.form.get('Time_Orderd')

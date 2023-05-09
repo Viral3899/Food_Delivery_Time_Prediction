@@ -72,7 +72,7 @@
             /* initial position off-screen */
             width: 100px;
             height: 80px;
-            animation: moveDeliveryBoy 8s linear infinite;
+            animation: moveDeliveryBoy 6s linear infinite;
         }
 
         @keyframes moveDeliveryBoy {
@@ -98,7 +98,7 @@
                 <h3>Delivery Time Prediction Result</h3>
                 <hr>
                 <div class="delivery-boy-container">
-                    <img src="./delivery-boy-3012842-2627456.webp" alt="Delivery Boy" class="delivery-boy" />
+                    <img src="{{ url_for('static', filename='images/delivery-boy-3012842-2627456.webp') }}" alt="Delivery Boy" class="delivery-boy" />
                 </div>
             </div>
         </div>

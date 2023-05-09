@@ -1,196 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Delivery Form</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
 
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="\static\style.css">
+    <title>Delivery</title>
 
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="number"],
-        input[type="date"],
-        input[type="time"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        input[type="submit"] {
-            background-color: #008CBA;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #005e80;
-        }
-
-        select {
-            height: 40px;
-        }
-
-        /* Responsive styling */
-        @media only screen and (max-width: 768px) {
-            form {
-                padding: 10px;
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            input[type="submit"] {
-                width: 100%;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <h1>Delivery Form</h1>
-    <form method="GET" action="{{ url_for('retrain') }}">
-		<input type="submit" value="Retrain Model">
-	</form>
-    <form method="post" action="{{url_for('index')}}">
-        <label for="Delivery_person_Age">Delivery person age:</label>
-        <input type="number" step="any" name="Delivery_person_Age" required><br><br>
+    <Section id='outer'>
+        <div class="container">
+            <div class="formdiv">
+                <form class="mainform" method="post" action="{{url_for('index')}}">
+                    <div class="mainbox upperline firstcol">
+                        <div class="input1">
+                            <label for="Delivery_person_Age">Delivery person age:</label>
+                            <input type="number" step="any" name="Delivery_person_Age" required>
+                        </div>
+                    </div>
+                    <div class="mainbox upperline secondcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Delivery_person_Ratings">Delivery person ratings:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" name="Delivery_person_Ratings" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox upperline thirdcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Restaurant_latitude">Restaurant latitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="restaurant-lat" name="Restaurant_latitude" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox upperline fourthcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Restaurant_longitude">Restaurant longitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="restaurant-lng" name="Restaurant_longitude"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox secondline firstcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Delivery_location_longitude">Delivery location longitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="delivery-lng" name="Delivery_location_longitude"
+                                    required>
 
-        <label for="Delivery_person_Ratings">Delivery person ratings:</label>
-        <input type="number" step="any" name="Delivery_person_Ratings" required><br><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox secondline fourthcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Order_Date">Order date:</label>
+                            </div>
+                            <div>
+                                <input type="date" name="Order_Date" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mapbox">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="toggle-switch">
+                            <label class="form-check-label" for="toggle-switch">Edit Location</label>
+                        </div>
+                    </div>
+                    <div class="mainbox thirdline firstcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Time_Orderd">Time ordered:</label>
+                            </div>
+                            <div>
+                                <input type="time" name="Time_Orderd" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox thirdline fourthcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Time_Order_picked">Time order picked:</label>
+                            </div>
+                            <div>
+                                <input type="time" name="Time_Order_picked" required>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="Restaurant_latitude">Restaurant latitude:</label>
-        <input type="number" step="any" name="Restaurant_latitude" required><br><br>
+                    <div class="mainbox lowerline firstcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Weather_conditions">Weather conditions:</label>
+                            </div>
+                            <div>
+                                <select name="Weather_conditions" required>
+                                    <option value="Fog">Fog</option>
+                                    <option value="Stormy">Stormy</option>
+                                    <option value="Sandstorms">Sandstorms</option>
+                                    <option value="Windy">Windy</option>
+                                    <option value="Cloudy">Cloudy</option>
+                                    <option value="Sunny">Sunny</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox lowerline secondcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Road_traffic_density">Road traffic density:</label>
+                            </div>
+                            <div>
+                                <select name="Road_traffic_density" required>
+                                    <option value="Jam">Jam</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox lowerline thirdcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Vehicle_condition">Vehicle condition:</label>
+                            </div>
+                            <div>
+                                <select name="Vehicle_condition" required>
+                                    <option value="2">Excellent</option>
+                                    <option value="1">Good</option>
+                                    <option value="0">Average</option>
+                                    <option value="3">Bad</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox lowerline fourthcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Type_of_order">Type of order:</label>
+                            </div>
+                            <div>
+                                <select name="Type_of_order" required>
+                                    <option value="Snack">Snack</option>
+                                    <option value="Meal">Meal</option>
+                                    <option value="Drinks">Drinks</option>
+                                    <option value="Buffet">Buffet</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="Restaurant_longitude">Restaurant longitude:</label>
-        <input type="number" step="any" name="Restaurant_longitude" required><br><br>
+                    <div class="mainbox fithline1">
+                        <div class="input1">
+                            <div>
+                                <label for="Type_of_vehicle">Type of vehicle:</label>
+                            </div>
+                            <div>
+                                <select name="Type_of_vehicle" required>
+                                    <option value="motorcycle">Motorcycle</option>
+                                    <option value="scooter">Scooter</option>
+                                    <option value="electric_scooter">Electric scooter</option>
+                                    <option value="bicycle">Bicycle</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox fithline2">
+                        <div class="input1">
+                            <div>
+                                <label for="multiple_deliveries">Multiple deliveries:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" name="multiple_deliveries" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox fithline3">
+                        <div class="input1">
+                            <div>
+                                <label for="Festival">Festival:</label>
+                            </div>
+                            <div>
+                                <select name="Festival" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox sixthline secondcol">
+                        <div class="input1">
+                            <div>
+                                <label for="City">City:</label>
+                            </div>
+                            <div>
+                                <select name="City" required>
+                                    <option value="Metropolitian">Metropolitian</option>
+                                    <option value="Urban">Urban</option>
+                                    <option value="Semi-Urban">Semi-Urban</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainbox sixthline thirdcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Delivery_location_latitude">Delivery location latitude:</label>
+                            </div>
+                            <div>
+                                <input type="number" step="any" id="delivery-lat" name="Delivery_location_latitude"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="Delivery_location_latitude">Delivery location latitude:</label>
-        <input type="number" step="any" name="Delivery_location_latitude" required><br><br>
+                    <input type="submit" value="Predict" class="Button">
+                </form>
+                <form method="GET" action="{{ url_for('retrain') }}">
+                    <input type="submit" value="Retrain Model" class="Button2">
+                </form>
 
-        <label for="Delivery_location_longitude">Delivery location longitude:</label>
-        <input type="number" step="any" name="Delivery_location_longitude" required><br><br>
+            </div>
+        </div>
 
-        <label for="Order_Date">Order date:</label>
-        <input type="date" name="Order_Date" required><br><br>
+    </Section>
 
-        <label for="Time_Orderd">Time ordered:</label>
-        <input type="time" name="Time_Orderd" required><br><br>
 
-        <label for="Time_Order_picked">Time order picked:</label>
-        <input type="time" name="Time_Order_picked" required><br><br>
 
-        <label for="Weather_conditions">Weather conditions:</label>
-        <select name="Weather_conditions" required>
-            <option value="Fog">Fog</option>
-            <option value="Stormy">Stormy</option>
-            <option value="Sandstorms">Sandstorms</option>
-            <option value="Windy">Windy</option>
-            <option value="Cloudy">Cloudy</option>
-            <option value="Sunny">Sunny</option>
-        </select><br><br>
-
-        <label for="Road_traffic_density">Road traffic density:</label>
-        <select name="Road_traffic_density" required>
-            <option value="Jam">Jam</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-        </select><br><br>
-
-        <label for="Vehicle_condition">Vehicle condition:</label>
-        <select name="Vehicle_condition" required>
-            <option value="2">Excellent</option>
-            <option value="1">Good</option>
-            <option value="0">Average</option>
-            <option value="3">Bad</option>
-        </select><br><br>
-
-        <label for="Type_of_order">Type of order:</label>
-        <select name="Type_of_order" required>
-            <option value="Snack">Snack</option>
-            <option value="Meal">Meal</option>
-            <option value="Drinks">Drinks</option>
-            <option value="Buffet">Buffet</option>
-        </select><br><br>
-
-        <label for="Type_of_vehicle">Type of vehicle:</label>
-        <select name="Type_of_vehicle" required>
-            <option value="motorcycle">Motorcycle</option>
-            <option value="scooter">Scooter</option>
-            <option value="electric_scooter">Electric scooter</option>
-            <option value="bicycle">Bicycle</option>
-        </select><br><br>
-
-        <label for="multiple_deliveries">Multiple deliveries:</label>
-        <input type="number" step="any" name="multiple_deliveries" required><br><br>
-
-        <label for="Festival">Festival:</label>
-        <select name="Festival" required>
-            <option value="No">No</option>
-            <option value="Yes">Yes</option>
-        </select><br><br>
-
-        <label for="City">City:</label>
-        <select name="City" required>
-            <option value="Metropolitian">Metropolitian</option>
-            <option value="Urban">Urban</option>
-            <option value="Semi-Urban">Semi-Urban</option>
-        </select><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-    <div id="map" style="height: 400px;"></div>
 
     <script>
-        var mymap = L.map('map').setView([23.2156, 72.6369], 8);
+        var restaurantMarker;
+        var deliveryMarker;
+
+        var mymap = L.map('mapbox').setView([23.2156, 72.6369], 8);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxZoom: 18,
         }).addTo(mymap);
 
-        var marker;
-
         function onMapClick(e) {
-            if (marker) {
-                mymap.removeLayer(marker);
+            if (document.getElementById("toggle-switch").checked) {
+                if (!restaurantMarker) {
+                    restaurantMarker = L.marker(e.latlng).addTo(mymap);
+                    document.getElementById("restaurant-lat").value = e.latlng.lat.toFixed(6);
+                    document.getElementById("restaurant-lng").value = e.latlng.lng.toFixed(6);
+                } else if (!deliveryMarker) {
+                    deliveryMarker = L.marker(e.latlng).addTo(mymap);
+                    document.getElementById("delivery-lat").value = e.latlng.lat.toFixed(6);
+                    document.getElementById("delivery-lng").value = e.latlng.lng.toFixed(6);
+                } else {
+                    alert("Both points have already been added.");
+                }
             }
-            marker = L.marker(e.latlng).addTo(mymap);
-            document.getElementById("lat-input").value = e.latlng.lat.toFixed(6);
-            document.getElementById("lng-input").value = e.latlng.lng.toFixed(6);
         }
 
         mymap.on('click', onMapClick);
+
+        document.getElementById("toggle-switch").addEventListener("change", function () {
+            var inputs = document.querySelectorAll("input[type=number]");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = !this.checked;
+            }
+            if (this.checked) {
+                if (restaurantMarker) {
+                    mymap.removeLayer(restaurantMarker);
+                    restaurantMarker = null;
+                    document.getElementById("restaurant-lat").value = "";
+                    document.getElementById("restaurant-lng").value = "";
+                }
+
+                if (deliveryMarker) {
+                    mymap.removeLayer(deliveryMarker);
+                    deliveryMarker = null;
+                    document.getElementById("delivery-lat").value = "";
+                    document.getElementById("delivery-lng").value = "";
+                }
+            }
+        });
+
     </script>
+
+
+
 </body>
 
 </html>
