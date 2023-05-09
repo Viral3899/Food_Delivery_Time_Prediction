@@ -142,16 +142,6 @@
                     <div class="mainbox lowerline thirdcol">
                         <div class="input1">
                             <div>
-                                <label for="Time_Order_picked">Time order picked:</label>
-                            </div>
-                            <div>
-                                <input type="time" name="Time_Order_picked" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mainbox lowerline fourthcol">
-                        <div class="input1">
-                            <div>
                                 <label for="Vehicle_condition">Vehicle condition:</label>
                             </div>
                             <div>
@@ -164,8 +154,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="mainbox fithline1">
+                    <div class="mainbox lowerline fourthcol">
                         <div class="input1">
                             <div>
                                 <label for="Type_of_order">Type of order:</label>
@@ -180,7 +169,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mainbox fithline2">
+
+                    <div class="mainbox fithline1">
                         <div class="input1">
                             <div>
                                 <label for="Type_of_vehicle">Type of vehicle:</label>
@@ -195,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mainbox fithline3">
+                    <div class="mainbox fithline2">
                         <div class="input1">
                             <div>
                                 <label for="multiple_deliveries">Multiple deliveries:</label>
@@ -205,7 +195,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mainbox sixthline secondcol">
+                    <div class="mainbox fithline3">
                         <div class="input1">
                             <div>
                                 <label for="Festival">Festival:</label>
@@ -218,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mainbox sixthline thirdcol">
+                    <div class="mainbox sixthline secondcol">
                         <div class="input1">
                             <div>
                                 <label for="City">City:</label>
@@ -232,17 +222,30 @@
                             </div>
                         </div>
                     </div>
-            
+                    <div class="mainbox sixthline thirdcol">
+                        <div class="input1">
+                            <div>
+                                <label for="Time_Order_picked">Time order picked:</label>
+                            </div>
+                            <div>
+                                <input type="time" name="Time_Order_picked" required>
+                            </div>
+                        </div>
+                    </div>
+            </div>
 
             <input type="submit" value="Predict" class="Button">
-           
-            <button id="apiButton" class="Button2" onclick='window.location.href="/retrain"'>Retrain</button>
-        </form>
+            </form>
+            <form method="GET" action="{{ url_for('retrain') }}">
+                <input type="submit" value="Retrain Model" class="Button2">
+            </form>
 
         </div>
         </div>
 
     </Section>
+
+
 
 
     <script>
@@ -294,47 +297,6 @@
                     document.getElementById("delivery-lng").value = "";
                 }
             }
-        });
-
-// Map --------------------------------------------------------- Completed
-
-// Retrain --------------------------------------------------------- Started
-
-
-        $(document).ready(function () {
-            $('#myForm').submit(function (e) {
-                e.preventDefault(); // Prevent form submission
-                // Perform form submission manually using AJAX
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: $(this).attr('method'),
-                    data: $(this).serialize(),
-                    success: function (response) {
-                        // Handle form submission success here
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        // Handle form submission error here
-                        console.log(error);
-                    }
-                });
-            });
-    
-            $('#apiButton').click(function () {
-                // Perform retrain API call
-                $.ajax({
-                    url: '/retrain',  // Retrain API route
-                    type: 'GET',
-                    success: function (response) {
-                        // Handle retrain API response here
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        // Handle retrain API error here
-                        console.log(error);
-                    }
-                });
-            });
         });
 
     </script>

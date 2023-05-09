@@ -1,3 +1,6 @@
+.container{
+    margin: auto;
+}
 #outer {
     background-color: rgb(255, 214, 160);
     border: 1px solid #000;
@@ -21,7 +24,16 @@ Section{
     border: 1px solid black;
     position: relative;
 
+}   
+form {
+    width: 1511px;
+    height: 1511px;
+    background-color: rgb(240, 255, 255);
+    border: 1px solid black;
+    position: relative;
+
 }
+
 
 .mainbox {
     height: 105px;
@@ -135,12 +147,24 @@ Section{
 
 .Button{
     position: absolute;
-top: 1450px;
+top: 1400px;
 right: 20px;
+font-size: 25px;
+color: #fff;
+background-color: #1b720e;
+height: 70px;
+width: 200px;
+border-radius: 150px;   
 }
 
 .Button2{
     position: absolute;
-top: 1450px;
+top: 1400px;
 left: 20px;
+font-size: 25px;
+color: #fff;
+background-color: #0b3a96;
+height: 70px;
+width: 200px;
+border-radius: 150px;
 }
