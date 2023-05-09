@@ -25,6 +25,14 @@ Section{
     position: relative;
 
 }   
+
+h1{
+    text-align: center;
+    color: #0b3a96;
+    font-size: 35px;
+    font-style: oblique;
+    font-weight: 800;
+}
 form {
     width: 1511px;
     height: 1511px;
