@@ -70,11 +70,11 @@ class DataIngestion:
              --> Into Folder : [{tgz_file_path}]
              """)
 
-            urllib.request.urlretrieve(download_url, tgz_file_path)
+            # urllib.request.urlretrieve(download_url, tgz_file_path)
 
-            # response = requests.get(download_url)
-            # with open(tgz_file_path, 'wb') as f:
-            #     f.write(response.content)
+            response = requests.get(download_url)
+            with open(tgz_file_path, 'wb') as f:
+                f.write(response.content)
 
             logging.info(
                 f"File :[{tgz_file_path}] has been downloaded successfully.")

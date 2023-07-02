@@ -10,7 +10,7 @@ from food_delivery.entity.delivery_time_predictor import DeliveryData, FoodDeliv
 from food_delivery.config.configuration import Configuration
 from food_delivery.constant import *
 
-OOT_DIR = os.getcwd()
+ROOT_DIR = os.getcwd()
 LOG_FOLDER_NAME = "logs"
 PIPELINE_FOLDER_NAME = "fod_delivery"
 SAVED_MODELS_DIR_NAME = "saved_models"
@@ -25,28 +25,30 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    print(request.method)
     if request.method == 'POST':
         # Get the form data
-        delivery_person_age = float(request.form.get('Delivery_person_Age'))
+        print(request.form)
+        delivery_person_age = float(request.form['Delivery_person_Age'])
         delivery_person_ratings = float(
-            request.form.get('Delivery_person_Ratings'))
-        restaurant_latitude = float(request.form.get('Restaurant_latitude'))
-        restaurant_longitude = float(request.form.get('Restaurant_longitude'))
+            request.form['Delivery_person_Ratings'])
+        restaurant_latitude = float(request.form['Restaurant_latitude'])
+        restaurant_longitude = float(request.form['Restaurant_longitude'])
         delivery_location_latitude = float(
-            request.form.get('Delivery_location_latitude'))
+            request.form['Delivery_location_latitude'])
         delivery_location_longitude = float(    
-            request.form.get('Delivery_location_longitude'))
-        order_date = request.form.get('Order_Date')
-        time_ordered = request.form.get('Time_Orderd')
-        time_order_picked = request.form.get('Time_Order_picked')
-        weather_conditions = request.form.get('Weather_conditions')
-        road_traffic_density = request.form.get('Road_traffic_density')
-        vehicle_condition = int(request.form.get('Vehicle_condition'))
-        type_of_order = request.form.get('Type_of_order')
-        type_of_vehicle = request.form.get('Type_of_vehicle')
-        multiple_deliveries = float(request.form.get('multiple_deliveries'))
-        festival = request.form.get('Festival')
-        city = request.form.get('City')
+            request.form['Delivery_location_longitude'])
+        order_date = request.form['Order_Date']
+        time_ordered = request.form['Time_Orderd']
+        time_order_picked = request.form['Time_Order_picked']
+        weather_conditions = request.form['Weather_conditions']
+        road_traffic_density = request.form['Road_traffic_density']
+        vehicle_condition = int(request.form['Vehicle_condition'])
+        type_of_order = request.form['Type_of_order']
+        type_of_vehicle = request.form['Type_of_vehicle']
+        multiple_deliveries = float(request.form['multiple_deliveries'])
+        festival = request.form['Festival']
+        city = request.form['City']
 
         # Perform any required processing on the form data here
         food_delivery_data = DeliveryData(
@@ -123,4 +125,4 @@ def retrain():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=3000,debug=True)
