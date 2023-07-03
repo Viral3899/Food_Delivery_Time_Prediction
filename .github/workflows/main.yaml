@@ -86,9 +86,9 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
-      # - name: Stop and remove container if running
-      #   run: |
-      #    docker ps -q --filter "name=Chicken_Disease_classification" | grep -q . && docker stop Chicken_Disease_classification && docker rm -fv Chicken_Disease_classification
+      - name: Stop and remove container if running
+        run: |
+         docker ps -q --filter "name=Chicken_Disease_classification" | grep -q . && docker stop Chicken_Disease_classification && docker rm -fv Chicken_Disease_classification
        
       - name: Run Docker Image to serve users
         run: |
