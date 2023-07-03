@@ -5,7 +5,7 @@ scikit-learn
 xgboost
 catboost
 evidently==0.2.0
-dill
+dill==0.3.6
 pytest
 geopy
 -e .
