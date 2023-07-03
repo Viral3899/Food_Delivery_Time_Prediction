@@ -88,7 +88,7 @@ jobs:
          
       - name: Stop and remove container if running
         run: |
-         docker ps -q --filter "name=Chicken_Disease_classification" | grep -q . && docker stop Chicken_Disease_classification && docker rm -fv Chicken_Disease_classification
+         docker ps -q --filter "name=Food_Delivery_time_prediction" | grep -q . && docker stop Food_Delivery_time_prediction && docker rm -fv Food_Delivery_time_prediction
        
       - name: Run Docker Image to serve users
         run: |
