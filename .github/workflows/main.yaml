@@ -86,9 +86,9 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
-      - name: Stop and remove container if running
-        run: |
-         docker ps -q --filter "name=Food_Delivery_time_prediction" | grep -q . && docker stop Food_Delivery_time_prediction && docker rm -fv Food_Delivery_time_prediction
+      # - name: Stop and remove container if running
+      #   run: |
+      #    docker ps -q --filter "name=Food_Delivery_time_prediction" | grep -q . && docker stop Food_Delivery_time_prediction && docker rm -fv Food_Delivery_time_prediction
        
       - name: Run Docker Image to serve users
         run: |
